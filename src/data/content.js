@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Code, Layout, Database, Server, Smartphone, Globe, Cloud, Terminal, Cpu, GitBranch, Shield } from "lucide-react";
+import { Github, Linkedin, Mail, Code, Layout, Database, Server, Smartphone, Globe, Cloud, Terminal, Cpu, GitBranch, Shield, PlayCircle, FileText, Lock, Users, Play, FileCheck, FileSearch, BarChart3, Layers, Workflow, Brain, Anchor, Pill, Scale } from "lucide-react";
 
 export const personalInfo = {
     name: "Faizal Ahamed J",
@@ -6,7 +6,7 @@ export const personalInfo = {
     location: "Chennai, Tamil Nadu, India",
     email: "faizalahamedj331@gmail.com",
     linkedin: "https://www.linkedin.com/in/faizal-ahamed-j-a1a89a346",
-    github: "https://github.com/faizalahamedj331-cmd",
+    github: "https://github.com/FaizalahamedJ-331",
     heroTagline: "Architecting scalable web solutions with Django, React, and robust REST APIs.",
     summary: "Results-oriented Python Full Stack Developer with expertise in designing and building scalable web applications using Django, React, and REST APIs. Proven track record of architecting high-performance backend systems, implementing secure role-based authentication, and optimizing database schemas for efficiency. Adept at translating complex business requirements into production-ready technical solutions.",
 };
@@ -16,39 +16,70 @@ export const skills = [
         category: "Languages",
         items: [
             { name: "Python", icon: Code },
-            { name: "JavaScript (ES6+)", icon: Code },
-            { name: "SQL", icon: Database },
+            { name: "JavaScript (ES6+)", icon: Code }
+        ]
+    },
+    {
+        category: "Frontend",
+        items: [
+            { name: "React.js", icon: Code },
+            { name: "HTML5", icon: Layout },
+            { name: "CSS3", icon: Layout },
+            { name: "Bootstrap", icon: Layout },
+            { name: "Responsive Web Design", icon: Smartphone }
         ]
     },
     {
         category: "Backend",
         items: [
             { name: "Django", icon: Server },
-            { name: "REST Framework", icon: Cloud },
-            { name: "MVC Arch", icon: Layout },
-        ]
-    },
-    {
-        category: "Frontend",
-        items: [
-            { name: "ReactJS", icon: Code },
-            { name: "Bootstrap", icon: Layout },
+            { name: "Django REST Framework (DRF)", icon: Cloud },
+            { name: "RESTful APIs", icon: Cloud },
+            { name: "JWT Authentication", icon: Lock },
+            { name: "RBAC (Role-Based Access Control)", icon: Shield },
+            { name: "Celery", icon: Workflow },
+            { name: "Redis", icon: Database }
         ]
     },
     {
         category: "Database",
         items: [
             { name: "MySQL", icon: Database },
-            { name: "Optimization", icon: Terminal },
+            { name: "SQLite", icon: Database },
+            { name: "Joins", icon: Layers },
+            { name: "CRUD Operations", icon: FileText },
+            { name: "Query Optimization", icon: BarChart3 },
+            { name: "Schema Design", icon: FileSearch }
         ]
     },
     {
-        category: "Tools & DevOps",
+        category: "DevOps & Tools",
         items: [
-            { name: "Git & GitHub", icon: GitBranch },
             { name: "Docker", icon: Server },
-            { name: "CI/CD", icon: Cloud },
+            { name: "CI/CD", icon: GitBranch },
+            { name: "Git", icon: GitBranch },
+            { name: "GitHub", icon: Github },
             { name: "Postman", icon: Globe },
+            { name: "VS Code", icon: Code },
+            { name: "Vercel", icon: Cloud },
+            { name: "Version Control", icon: GitBranch },
+            { name: "Deployment", icon: Cloud }
+        ]
+    },
+    {
+        category: "Testing",
+        items: [
+            { name: "Unit Testing", icon: PlayCircle },
+            { name: "PyTest", icon: Play }
+        ]
+    },
+    {
+        category: "Core Concepts",
+        items: [
+            { name: "MVC / MVT Architecture", icon: Layout },
+            { name: "Authentication & Authorization", icon: Shield },
+            { name: "Agile Development", icon: Workflow },
+            { name: "Generative AI", icon: Brain }
         ]
     }
 ];
@@ -56,6 +87,13 @@ export const skills = [
 export const experience = [
     {
         id: 1,
+        title: "Full Stack Developer — Intern",
+        company: "e-Soft IT Solutions, Tiruchirappalli",
+        year: "July 2025 – August 2025",
+        description: "Built full-stack features using Python, Django, and React.js. Applied REST API design best practices. Used Git version control workflow for development.",
+    },
+    {
+        id: 2,
         title: "Python Full Stack Developer Intern",
         company: "Besant Technologies",
         year: "Less than 1 year",
@@ -75,7 +113,7 @@ export const projects = [
             "Real-time dashboards using React & Chart.js",
             "Optimized Django ORM queries for high performance",
         ],
-        github: "https://github.com/faizalahamedj331-cmd/projectsx2",
+        github: "https://github.com/FaizalahamedJ-331/projectsx2",
         live: "#",
     },
     {
@@ -89,7 +127,7 @@ export const projects = [
             "Lazy loading & state management for performance",
             "Comprehensive inventory tracking system",
         ],
-        github: "https://github.com/faizalahamedj331-cmd/smartcater",
+        github: "https://github.com/FaizalahamedJ-331/smartcater",
         live: "#",
     },
     {
@@ -102,7 +140,7 @@ export const projects = [
             "Implemented dynamic step-based workflow engine with automated state transitions, real-time activity logging, and simulation controls",
             "Designed custom workflow builder with local storage persistence and interactive pipeline visualization",
         ],
-        github: "https://github.com/faizalahamedj331-cmd/flowforge",
+        github: "https://github.com/FaizalahamedJ-331/flowforge",
         live: "https://flowforg.netlify.app",
     }
 ];
@@ -115,6 +153,7 @@ export const education = {
 };
 
 export const certifications = [
-    "Generative AI – Great Learning",
-    "Full Stack Development – Esoft IT Solutions",
+    { name: "Generative AI for Beginners – Great Learning", pdf: "/certs/genai-beginners.pdf" },
+    { name: "Full Stack Development – Esoft IT Solutions" },
 ];
+

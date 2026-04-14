@@ -78,7 +78,7 @@ const Education = () => {
                             </div>
                             <div className="text-center p-4 bg-white/5 rounded-xl">
                                 <span className="text-3xl font-bold text-purple-400 block">2026</span>
-                                <span className="text-gray-400 text-sm">Expected Graduation</span>
+                                <span className="text-gray-400 text-sm">Graduated</span>
                             </div>
                             <div className="text-center p-4 bg-white/5 rounded-xl">
                                 <span className="text-3xl font-bold text-green-400 block">Top 10%</span>

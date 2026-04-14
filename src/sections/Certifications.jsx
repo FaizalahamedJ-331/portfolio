@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { certifications } from "../data/content";
 import SectionWrapper from "../components/SectionWrapper";
-import { Badge, CheckCircle } from "lucide-react";
+import { Badge, CheckCircle, Download } from "lucide-react";
 
 const Certifications = () => {
     return (
@@ -18,7 +18,7 @@ const Certifications = () => {
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {certifications.map((cert, index) => (
+{certifications.map((cert, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, scale: 0.9 }}
@@ -34,8 +34,20 @@ const Certifications = () => {
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-lg font-semibold text-white mb-2">
-                                            {cert}
+                                            {cert.name}
                                         </h3>
+{cert.pdf && (
+                                            <motion.a 
+                                                href={cert.pdf}
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                initial={{ scale: 1 }}
+                                                whileHover={{ scale: 1.1 }}
+                                                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 p-1.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 backdrop-blur-sm hover:shadow-md hover:shadow-white/10 text-blue-400 hover:text-blue-300"
+                                            >
+                                                <Download size={14} />
+                                            </motion.a>
+                                        )}
                                         <div className="flex items-center gap-2 text-green-400 text-sm">
                                             <CheckCircle size={16} />
                                             <span>Verified</span>
