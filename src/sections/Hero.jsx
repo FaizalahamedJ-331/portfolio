@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { personalInfo } from "../data/content";
 import profilePhoto from "../images/normal photo.jpeg";
+import resumePdf from "../resume/Faizal_Ahamed_J_Resume_updated.pdf";
 
 const Hero = () => {
     return (
@@ -29,16 +30,14 @@ const Hero = () => {
                             className="w-40 h-40 mx-auto rounded-full object-cover border-4 border-blue-500/30 shadow-lg shadow-blue-500/20"
                         />
                     </motion.div>
-
-                    <h2 className="text-blue-400 font-medium tracking-wide mb-4">Hello, I'm</h2>
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-                        {personalInfo.name}
+                    <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4">
+                        {personalInfo.heroHeadline}
                     </h1>
-                    <h3 className="text-2xl md:text-4xl font-semibold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-6">
-                        {personalInfo.title}
-                    </h3>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-lg mb-8 leading-relaxed">
-                        {personalInfo.heroTagline}
+                    <h2 className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-4">
+                        {personalInfo.heroSubheadline}
+                    </h2>
+                    <p className="text-blue-300 font-medium mb-8">
+                        {personalInfo.proofLine}
                     </p>
                 </motion.div>
 
@@ -50,12 +49,14 @@ const Hero = () => {
                 >
                     <a
                         href="#projects"
-                        className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-blue-600/25"
+                        className="px-8 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white font-medium flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-blue-600/25"
                     >
-                        View Work <ArrowRight size={20} />
+                        View Projects <ArrowRight size={20} />
                     </a>
                     <a
-                        href="/faizal_resume.pdf"
+                        href={resumePdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="px-8 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/10 font-medium flex items-center justify-center gap-2 transition-all backdrop-blur-sm"
                     >
                         Download Resume <Download size={20} />

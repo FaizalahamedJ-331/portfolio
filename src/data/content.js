@@ -3,12 +3,16 @@ import { Github, Linkedin, Mail, Code, Layout, Database, Server, Smartphone, Glo
 export const personalInfo = {
     name: "Faizal Ahamed J",
     title: "Python Full Stack Developer",
-    location: "Chennai, Tamil Nadu, India",
+    location: "Chennai, TN",
     email: "faizalahamedj331@gmail.com",
-    linkedin: "https://www.linkedin.com/in/faizal-ahamed-j-a1a89a346",
+    linkedin: "https://linkedin.com/in/faizal-ahamed-j-a1a89a346",
     github: "https://github.com/FaizalahamedJ-331",
-    heroTagline: "Architecting scalable web solutions with Django, React, and robust REST APIs.",
-    summary: "Results-oriented Python Full Stack Developer with expertise in designing and building scalable web applications using Django, React, and REST APIs. Proven track record of architecting high-performance backend systems, implementing secure role-based authentication, and optimizing database schemas for efficiency. Adept at translating complex business requirements into production-ready technical solutions.",
+    portfolio: "https://faizalsportfolio.vercel.app",
+    heroHeadline: "Build web apps that actually work in real-world use",
+    heroSubheadline: "Python Full Stack Developer building secure Django + React systems with REST APIs, JWT authentication, RBAC, and optimized databases.",
+    proofLine: "100+ APIs built • 40% faster queries • 200+ users supported • 2 live full stack projects",
+    heroTagline: "Architecting scalable Django + React systems with reliable REST APIs.",
+    summary: "I’m Faizal Ahamed J, a Python Full Stack Developer focused on building web applications that are secure, usable, and ready for real users. During my internship experience, I worked on Django and React systems, built 100+ REST API endpoints, implemented JWT authentication with role-based access control, and optimized MySQL queries to improve performance by 40%. I’m a B.E. Computer Science graduate (CGPA 8.7/10) looking for Python Developer, Django Developer, and Full Stack Developer roles where I can contribute to production systems from day one.",
 };
 
 export const skills = [
@@ -87,39 +91,51 @@ export const skills = [
 export const experience = [
     {
         id: 1,
-        title: "Full Stack Developer — Intern",
-        company: "e-Soft IT Solutions, Tiruchirappalli",
-        year: "July 2025 – August 2025",
-        description: "Built full-stack features using Python, Django, and React.js. Applied REST API design best practices. Used Git version control workflow for development.",
+        title: "Python Full Stack Developer — Intern",
+        company: "Besant Technologies, Chennai",
+        year: "Dec 2024 – Present",
+        description: "Designed and deployed full-stack applications using Django MVT architecture and React.js.",
+        bullets: [
+            "Designed and deployed full-stack applications using Django MVT architecture and React.js.",
+            "Developed and secured 100+ RESTful API endpoints with JWT authentication and RBAC.",
+            "Optimized MySQL queries and schema design, improving data retrieval performance by 40%.",
+            "Integrated React.js frontend with Django REST Framework APIs for seamless real-time data flow.",
+            "Built reusable React.js component libraries for consistent UI across modules.",
+        ],
     },
     {
         id: 2,
-        title: "Python Full Stack Developer Intern",
-        company: "Besant Technologies",
-        year: "Less than 1 year",
-        description: "Architected and deployed an Enterprise Academic Workflow System using Django and React, reducing administrative workload by 40%. Engineered robust RESTful APIs with optimized endpoints to handle high-concurrency data requests. Implemented secure JWT-based authentication and granular Role-Based Access Control (RBAC).",
+        title: "Full Stack Developer — Intern",
+        company: "e-Soft IT Solutions, Tiruchirappalli",
+        year: "Jul 2025 – Aug 2025",
+        description: "Built full-stack features using Python, Django, and React.js.",
+        bullets: [
+            "Built full-stack features using Python, Django, and React.js.",
+            "Applied REST API design best practices and Git version control workflow.",
+            "Assisted in testing and debugging Django backend modules for production-ready deployments.",
+        ],
     }
 ];
 
 export const projects = [
     {
         id: 1,
-        title: "Student project and internship tracking platform",
-        stack: ["Django", "React", "MySQL"],
-        description: "A centralized platform for managing academic project lifecycles with automated workflows.",
+        title: "Student Project & Internship Tracking Platform",
+        stack: ["Python", "Django", "React.js", "MySQL", "JWT", "REST APIs"],
+        description: "A role-based full stack platform for 200+ students and faculty with separate dashboards, secure login, JWT authentication, real-time status tracking, and 30+ REST APIs.",
         features: [
-            "Automated submission portals & peer review workflows",
-            "Secure JWT authentication & Role-Based Access Control",
-            "Real-time dashboards using React & Chart.js",
-            "Optimized Django ORM queries for high performance",
+            "Role-based dashboards for students and faculty",
+            "Secure JWT authentication and Role-Based Access Control",
+            "Real-time status tracking and notifications",
+            "30+ REST APIs for submissions, reviews, and reporting",
         ],
-        github: "https://github.com/FaizalahamedJ-331/projectsx2",
+        github: "https://github.com/faizalahamedj331-cmd/projectsx2",
         live: "#",
     },
     {
         id: 2,
         title: "SmartCater – Catering Management System",
-        stack: ["Django", "React", "REST API", "MySQL"],
+        stack: ["Python", "Django", "React.js", "MySQL", "REST APIs"],
         description: "Enterprise catering management solution for order processing and inventory tracking.",
         features: [
             "Multi-tenant architecture for vendor management",
@@ -127,7 +143,7 @@ export const projects = [
             "Lazy loading & state management for performance",
             "Comprehensive inventory tracking system",
         ],
-        github: "https://github.com/FaizalahamedJ-331/smartcater",
+        github: "https://github.com/faizalahamedj331-cmd/smartcater",
         live: "#",
     },
     {
@@ -146,14 +162,15 @@ export const projects = [
 ];
 
 export const education = {
-    degree: "B.E Computer Science Engineering",
-    institution: "Indra Ganesan College of Engineering",
-    year: "2022–2026",
-    cgpa: "8.7 / 10",
+    degree: "B.E. Computer Science Engineering",
+    institution: "Indra Ganesan College of Engineering, Tiruchirappalli",
+    year: "2022 – 2026",
+    cgpa: "8.7 / 10.0",
 };
-
 export const certifications = [
-    { name: "Generative AI for Beginners – Great Learning", pdf: "/certs/genai-beginners.pdf" },
-    { name: "Full Stack Development – Esoft IT Solutions" },
+    { name: "Full Stack Development — e-Soft IT Solutions, Tiruchirappalli, 2025" },
+    { name: "Generative AI — Simplilearn SkillUp, 2025" },
+    { name: "Frontend and React.js — Besant Technologies Velachery, Chennai, 2026" },
+    { name: "Python and SQL — Besant Technologies Velachery, Chennai, 2026" },
 ];
 

@@ -37,9 +37,16 @@ const Experience = () => {
                                     <Briefcase size={18} />
                                     {job.company}
                                 </h4>
-                                <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-                                    {job.description}
-                                </p>
+                                <div className="text-gray-300 leading-relaxed text-sm md:text-base">
+                                    <p>{job.description}</p>
+                                    {job.bullets && (
+                                        <ul className="list-disc list-inside mt-3 space-y-1">
+                                            {job.bullets.map((b, i) => (
+                                                <li key={i}>{b}</li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
                     ))}

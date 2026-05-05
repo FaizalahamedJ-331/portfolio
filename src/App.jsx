@@ -7,6 +7,7 @@ import Education from "./sections/Education";
 import Projects from "./sections/Projects";
 import Certifications from "./sections/Certifications";
 import Contact from "./sections/Contact";
+import Stats from "./sections/Stats";
 import Footer from "./components/Footer";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <div className="bg-dark min-h-screen text-white selection:bg-blue-500/30">
       <Navbar />
       <Hero />
+      <Stats />
       <About />
       <Skills />
       <Experience />

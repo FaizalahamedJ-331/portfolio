@@ -45,30 +45,8 @@ const About = () => {
                             </div>
                         </div>
 
-                        {/* Right Column - Quick Stats */}
+                        {/* Right Column - Connect */}
                         <div className="space-y-6">
-                            <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-                                <h3 className="text-xl font-semibold text-white mb-4">Quick Stats</h3>
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div className="text-center p-4 bg-white/5 rounded-xl">
-                                        <span className="text-3xl font-bold text-blue-400">{'<1'}</span>
-                                        <p className="text-gray-400 text-sm mt-1">Years Experience</p>
-                                    </div>
-                                    <div className="text-center p-4 bg-white/5 rounded-xl">
-                                        <span className="text-3xl font-bold text-purple-400">3</span>
-                                        <p className="text-gray-400 text-sm mt-1">Projects Completed</p>
-                                    </div>
-                                    <div className="text-center p-4 bg-white/5 rounded-xl">
-                                        <span className="text-3xl font-bold text-green-400">5+</span>
-                                        <p className="text-gray-400 text-sm mt-1">Technologies</p>
-                                    </div>
-                                    <div className="text-center p-4 bg-white/5 rounded-xl">
-                                        <span className="text-3xl font-bold text-yellow-400">2</span>
-                                        <p className="text-gray-400 text-sm mt-1">Certifications</p>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10">
                                 <h3 className="text-xl font-semibold text-white mb-4">Connect With Me</h3>
                                 <div className="flex gap-4 mb-4">
