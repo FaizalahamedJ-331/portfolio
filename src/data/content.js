@@ -93,7 +93,7 @@ export const experience = [
         id: 1,
         title: "Python Full Stack Developer — Intern",
         company: "Besant Technologies, Chennai",
-        year: "Dec 2024 – Present",
+        year: "Dec 2025 – May 2026",
         description: "Designed and deployed full-stack applications using Django MVT architecture and React.js.",
         bullets: [
             "Designed and deployed full-stack applications using Django MVT architecture and React.js.",
