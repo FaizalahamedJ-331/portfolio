@@ -1,5 +1,11 @@
 import { Github, Linkedin, Mail, Code, Layout, Database, Server, Smartphone, Globe, Cloud, Terminal, Cpu, GitBranch, Shield, PlayCircle, FileText, Lock, Users, Play, FileCheck, FileSearch, BarChart3, Layers, Workflow, Brain, Anchor, Pill, Scale } from "lucide-react";
 
+// Certificate PDF imports so Vite can resolve their URLs
+import genAI from "../files/8530123_Generative_AI_for_Beginners_8176962.pdf";
+import besantPythonSql from "../files/Besant certificate 1.pdf";
+import besantFrontendReact from "../files/besant certificate 2.pdf";
+import esoftCert from "../files/esoft certificate.pdf";
+
 export const personalInfo = {
     name: "Faizal Ahamed J",
     title: "Python Full Stack Developer",
@@ -168,9 +174,9 @@ export const education = {
     cgpa: "8.7 / 10.0",
 };
 export const certifications = [
-    { name: "Full Stack Development — e-Soft IT Solutions, Tiruchirappalli, 2025" },
-    { name: "Generative AI — Simplilearn SkillUp, 2025" },
-    { name: "Frontend and React.js — Besant Technologies Velachery, Chennai, 2026" },
-    { name: "Python and SQL — Besant Technologies Velachery, Chennai, 2026" },
+    { name: "Full Stack Development — e-Soft IT Solutions, Tiruchirappalli, 2025", pdf: esoftCert },
+    { name: "Generative AI — Simplilearn SkillUp, 2025", pdf: genAI },
+    { name: "Frontend and React.js — Besant Technologies Velachery, Chennai, 2026", pdf: besantFrontendReact },
+    { name: "Python and SQL — Besant Technologies Velachery, Chennai, 2026", pdf: besantPythonSql },
 ];
 
