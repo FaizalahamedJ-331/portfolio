@@ -1,87 +1,177 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Github, Linkedin, Mail, Search, Sun, Moon, Download } from "lucide-react";
 import { personalInfo } from "../data/content";
+import { sections } from "../data/sections";
+import { useScrollSpy } from "../hooks/useScrollSpy";
+import resumePdf from "../resume/Faizal_Ahamed_J_Resume_updated.pdf";
 
-const Navbar = () => {
+const sectionIds = sections.map((s) => s.id);
+
+const Navbar = ({ onOpenCommandPalette, theme, onToggleTheme }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const activeId = useScrollSpy(sectionIds, { offset: 140 });
 
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
-        window.addEventListener("scroll", handleScroll);
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const navLinks = [
-        { name: "About", href: "#about" },
-        { name: "Skills", href: "#skills" },
-        { name: "Experience", href: "#experience" },
-        { name: "Projects", href: "#projects" },
-        { name: "Contact", href: "#contact" },
-    ];
+    const navLinks = sections.slice(1); // skip "home" — it's handled by the logo
 
     return (
         <nav
-            className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-dark/80 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-5"
+            className={`fixed w-full z-50 transition-all duration-300 ${scrolled
+                ? "bg-themed/80 backdrop-blur-md shadow-lg py-3 border-b border-white/5"
+                : "bg-transparent py-5"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                <a href="#" className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                <a
+                    href="#home"
+                    className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent tracking-tight"
+                >
                     {personalInfo.name}
                 </a>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex space-x-8 items-center">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide"
-                        >
-                            {link.name}
-                        </a>
-                    ))}
+                <div className="hidden md:flex items-center gap-1">
+                    {navLinks.map((link) => {
+                        const isActive = activeId === link.id;
+                        return (
+                            <a
+                                key={link.id}
+                                href={`#${link.id}`}
+                                className={`relative px-3 py-2 text-sm font-medium tracking-wide transition-colors ${isActive ? "text-blue-400" : "text-themed-muted hover:text-blue-400"
+                                    }`}
+                            >
+                                {link.label}
+                                {isActive && (
+                                    <motion.span
+                                        layoutId="nav-active-pill"
+                                        className="absolute inset-x-1 -bottom-0.5 h-0.5 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full"
+                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                    />
+                                )}
+                            </a>
+                        );
+                    })}
+
+                    {/* Command palette trigger */}
+                    <button
+                        onClick={onOpenCommandPalette}
+                        className="ml-2 flex items-center gap-2 px-3 py-1.5 text-xs text-themed-faint hover:text-themed bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all"
+                        aria-label="Open command palette"
+                    >
+                        <Search size={14} />
+                        <span className="hidden lg:inline">Quick Jump</span>
+                        <kbd className="hidden lg:inline px-1.5 py-0.5 text-[10px] bg-white/10 rounded border border-white/10">
+                            ⌘K
+                        </kbd>
+                    </button>
+
+                    {/* Theme toggle */}
+                    <button
+                        onClick={onToggleTheme}
+                        className="ml-1 w-9 h-9 flex items-center justify-center text-themed-muted hover:text-blue-400 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all"
+                        aria-label="Toggle theme"
+                        title="Toggle theme"
+                    >
+                        {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+                    </button>
+
+                    <a
+                        href={resumePdf}
+                        download
+                        className="ml-2 hidden xl:flex items-center gap-1.5 px-3 py-1.5 text-xs text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 rounded-lg transition-all shadow-md shadow-blue-500/20"
+                    >
+                        <Download size={14} /> Resume
+                    </a>
+
                     <a
                         href={personalInfo.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-300 hover:text-white transition-colors"
+                        className="ml-1 text-themed-muted hover:text-blue-400 transition-colors p-2"
+                        aria-label="GitHub"
                     >
-                        <Github size={20} />
+                        <Github size={18} />
                     </a>
                 </div>
 
                 {/* Mobile Toggle */}
-                <button
-                    className="md:hidden text-gray-300 hover:text-white"
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
+                <div className="md:hidden flex items-center gap-2">
+                    <button
+                        onClick={onOpenCommandPalette}
+                        className="text-themed-muted hover:text-blue-400 p-2"
+                        aria-label="Open command palette"
+                    >
+                        <Search size={20} />
+                    </button>
+                    <button
+                        onClick={onToggleTheme}
+                        className="text-themed-muted hover:text-blue-400 p-2"
+                        aria-label="Toggle theme"
+                    >
+                        {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
+                    <button
+                        className="text-themed-muted hover:text-blue-400"
+                        onClick={() => setIsOpen(!isOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        {isOpen ? <X size={26} /> : <Menu size={26} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu */}
-            {isOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-dark/95 backdrop-blur-lg border-b border-white/10 p-6 flex flex-col space-y-4">
-                    {navLinks.map((link) => (
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.2 }}
+                        className="md:hidden absolute top-full left-0 w-full bg-themed/95 backdrop-blur-lg border-b border-white/10 p-6 flex flex-col space-y-1"
+                    >
+                        {navLinks.map((link) => {
+                            const isActive = activeId === link.id;
+                            return (
+                                <a
+                                    key={link.id}
+                                    href={`#${link.id}`}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`px-4 py-3 rounded-lg text-base font-medium transition-all ${isActive
+                                        ? "text-blue-400 bg-blue-500/10 border border-blue-500/20"
+                                        : "text-themed-muted hover:text-blue-400 hover:bg-white/5 border border-transparent"
+                                        }`}
+                                >
+                                    {link.label}
+                                </a>
+                            );
+                        })}
                         <a
-                            key={link.name}
-                            href={link.href}
+                            href={resumePdf}
+                            download
                             onClick={() => setIsOpen(false)}
-                            className="text-gray-300 hover:text-blue-400 text-lg font-medium"
+                            className="mt-3 flex items-center justify-center gap-2 px-4 py-3 text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-medium"
                         >
-                            {link.name}
+                            <Download size={18} /> Download Resume
                         </a>
-                    ))}
-                    <div className="flex space-x-6 mt-4">
-                        <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white"><Github /></a>
-                        <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white"><Linkedin /></a>
-                        <a href={`mailto:${personalInfo.email}`} className="text-gray-300 hover:text-white"><Mail /></a>
-                    </div>
-                </div>
-            )}
+                        <div className="flex space-x-6 mt-4 pt-4 border-t border-white/10">
+                            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-themed-muted hover:text-blue-400" aria-label="GitHub"><Github /></a>
+                            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-themed-muted hover:text-blue-400" aria-label="LinkedIn"><Linkedin /></a>
+                            <a href={`mailto:${personalInfo.email}`} className="text-themed-muted hover:text-blue-400" aria-label="Email"><Mail /></a>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </nav>
     );
 };

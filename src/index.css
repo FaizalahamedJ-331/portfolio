@@ -13,7 +13,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: var(--color-dark);
 
@@ -21,10 +21,39 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Theme tokens (defaults to dark) */
+  --bg-base: #050B18;
+  --bg-elevated: rgba(255, 255, 255, 0.05);
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+  --border-soft: rgba(255, 255, 255, 0.1);
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-muted: rgba(209, 213, 219, 1);
+  --text-faint: rgba(156, 163, 175, 1);
+}
+
+:root.light {
+  color-scheme: light;
+  color: #0f172a;
+  background-color: #f8fafc;
+  --bg-base: #f8fafc;
+  --bg-elevated: rgba(255, 255, 255, 0.7);
+  --bg-overlay: rgba(255, 255, 255, 0.6);
+  --border-soft: rgba(15, 23, 42, 0.12);
+  --text-primary: #0f172a;
+  --text-muted: #334155;
+  --text-faint: #64748b;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Custom Scrollbar */
@@ -33,7 +62,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-dark);
+  background: var(--bg-base);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -47,10 +76,117 @@ html {
 
 @layer utilities {
   .glass {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg;
+    @apply backdrop-blur-lg border shadow-lg;
+    background-color: var(--bg-elevated);
+    border-color: var(--border-soft);
   }
 
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600;
   }
+
+  .theme-surface {
+    background-color: var(--bg-elevated);
+    border-color: var(--border-soft);
+    color: var(--text-primary);
+  }
+
+  .text-themed {
+    color: var(--text-primary);
+  }
+
+  .text-themed-muted {
+    color: var(--text-muted);
+  }
+
+  .text-themed-faint {
+    color: var(--text-faint);
+  }
+
+  .bg-themed {
+    background-color: var(--bg-base);
+  }
+}
+
+/* Keyframes for advanced animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.45); }
+  70% { box-shadow: 0 0 0 12px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease forwards;
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+/* Command palette input */
+.command-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.command-input::placeholder {
+  color: var(--text-faint);
+}
+
+/* Particle canvas */
+.particle-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* GitHub contribution heatmap cells */
+.heatmap-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.35);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes heatmap-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0);
+  }
+}
+
+.heatmap-cell-today {
+  animation: heatmap-pulse 2s ease-in-out infinite;
 }
