@@ -34,20 +34,21 @@ const Navbar = ({ onOpenCommandPalette, theme, onToggleTheme }) => {
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 <a
                     href="#home"
-                    className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent tracking-tight"
+                    aria-label="Faizal Ahamed — Home"
+                    className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white font-bold text-base shadow-md shadow-blue-500/25 hover:scale-105 transition-transform"
                 >
-                    {personalInfo.name}
+                    FA
                 </a>
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-1">
+                {/* Desktop Menu — text links show at xl+; below xl we rely on the hamburger (always visible at md+). */}
+                <div className="hidden xl:flex items-center gap-1">
                     {navLinks.map((link) => {
                         const isActive = activeId === link.id;
                         return (
                             <a
                                 key={link.id}
                                 href={`#${link.id}`}
-                                className={`relative px-3 py-2 text-sm font-medium tracking-wide transition-colors ${isActive ? "text-blue-400" : "text-themed-muted hover:text-blue-400"
+                                className={`relative px-3 py-2 text-sm font-medium tracking-wide whitespace-nowrap transition-colors ${isActive ? "text-blue-400" : "text-themed-muted hover:text-blue-400"
                                     }`}
                             >
                                 {link.label}
@@ -104,8 +105,8 @@ const Navbar = ({ onOpenCommandPalette, theme, onToggleTheme }) => {
                     </a>
                 </div>
 
-                {/* Mobile Toggle */}
-                <div className="md:hidden flex items-center gap-2">
+                {/* Mid-size controls (md & lg) — utility buttons + hamburger. xl shows the full menu instead. */}
+                <div className="xl:hidden flex items-center gap-2">
                     <button
                         onClick={onOpenCommandPalette}
                         className="text-themed-muted hover:text-blue-400 p-2"
@@ -120,8 +121,17 @@ const Navbar = ({ onOpenCommandPalette, theme, onToggleTheme }) => {
                     >
                         {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
+                    <a
+                        href={personalInfo.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-themed-muted hover:text-blue-400 p-2"
+                        aria-label="GitHub"
+                    >
+                        <Github size={20} />
+                    </a>
                     <button
-                        className="text-themed-muted hover:text-blue-400"
+                        className="text-themed-muted hover:text-blue-400 p-2"
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
@@ -138,7 +148,7 @@ const Navbar = ({ onOpenCommandPalette, theme, onToggleTheme }) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.2 }}
-                        className="md:hidden absolute top-full left-0 w-full bg-themed/95 backdrop-blur-lg border-b border-white/10 p-6 flex flex-col space-y-1"
+                        className="xl:hidden absolute top-full left-0 w-full bg-themed/95 backdrop-blur-lg border-b border-white/10 p-6 flex flex-col space-y-1"
                     >
                         {navLinks.map((link) => {
                             const isActive = activeId === link.id;

@@ -26,9 +26,9 @@ const Hero = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="mb-6 relative inline-block"
+                        className="mb-3 relative inline-block"
                     >
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/40 to-purple-600/40 blur-xl" />
+                        <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-blue-500/30 to-purple-600/30 blur-2xl" />
                         <img
                             src={profilePhoto}
                             alt={personalInfo.name}
@@ -36,10 +36,20 @@ const Hero = () => {
                         />
                     </motion.div>
 
+                    {/* Name beside/under photo */}
+                    <motion.h3
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                        className="text-xl md:text-2xl font-semibold text-themed mb-6 tracking-wide"
+                    >
+                        {personalInfo.name}
+                    </motion.h3>
+
                     <motion.div
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
+                        transition={{ delay: 0.4, duration: 0.6 }}
                         className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-medium mb-5"
                     >
                         <Sparkles size={14} />
